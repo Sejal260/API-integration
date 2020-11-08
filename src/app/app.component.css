@@ -1,0 +1,38 @@
+* {
+    margin: 0;
+    padding: 0;
+  }
+  
+  header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 30px 10%;
+    border: 2px solid black;
+    background-color: black;
+  }
+  
+  #navbar {
+    align-items: center;
+  }
+  
+  #navbar ul {
+    display: flex;
+  }
+  
+  #navbar ul li {
+    list-style: none;
+    font-size: 1.3rem;
+  }
+  
+  #navbar ul li a {
+    color: white;
+    display: block;
+    padding: 3px 22px;
+    border-radius: 20px;
+    text-decoration: none;
+  }
+  #navbar ul li a:hover {
+    color: black;
+    background-color: white;
+  }

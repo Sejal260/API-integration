@@ -1,0 +1,29 @@
+<header>
+  <nav id="navbar">
+  <ul id="content">
+    <li>
+      <p class="nav-link"  routerLink="/login" routerLinkActive="active" style="margin-right:15em; font-size: 45px;">
+        Corona-Data</p>
+    </li>
+    <li class="item">
+      
+      <a class="nav-link" *ngIf="!_service.loggedIn()" routerLink="/login" routerLinkActive="active"
+        >Login</a>
+      
+    </li>
+    <li class="item">
+      <a class="nav-link" *ngIf="!_service.loggedIn()" routerLink="/signin" routerLinkActive="active"
+        >SignIn</a
+      >
+    </li>
+    <li class="item">
+      <a class="nav-link" *ngIf="_service.loggedIn()"  style="cursor: pointer;" (click)="_service.loggedOut()">LogOut</a>
+      
+    </li>
+  </ul>
+</nav>
+</header>
+
+<div class="container">
+<router-outlet></router-outlet>
+</div>

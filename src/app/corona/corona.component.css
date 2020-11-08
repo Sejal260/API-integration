@@ -1,0 +1,11 @@
+  
+table {
+    margin-top: 3em;
+    margin-left: 12em;
+    color: white;
+    border: 1px solid;
+}
+
+thead {
+    color: gold;
+}

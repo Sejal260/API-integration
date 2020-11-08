@@ -1,0 +1,38 @@
+<div class="container">
+    <h1 style="margin-top: 1em; margin-left: 13em;color:  #ffcd38;;"><u>Welcome to Corona-Table !</u></h1>
+      <table class="table table-striped">
+        <thead>
+            <tr>
+              <th>Country</th>
+              <th>Cases</th>
+              <th>Today Cases</th>
+              <th>Deaths</th>
+              <th>Today Deaths</th>
+              <th>Recovered</th>
+              <th>Active</th>
+              <th>Critical</th>
+              <th>Cases Per One Million</th>
+              <th>Deaths Per One Million</th>
+              <th>Total tests</th>
+              <th>Tests Per One Million</th>
+            </tr>
+    </thead>
+    <tbody>
+          <tr *ngFor="let item of data">
+            <td>{{ item.country }}</td>
+            <td>{{ item.cases }}</td>
+            <td>{{ item.todayCases }}</td>
+            <td>{{ item.deaths }}</td>
+            <td>{{ item.todayDeaths }}</td>
+            <td>{{ item.recovered }}</td>
+            <td>{{ item.active }}</td>
+            <td>{{ item.critical }}</td>
+            <td>{{ item.casesPerOneMillion }}</td>
+            <td>{{ item.deathsPerOneMillion }}</td>
+            <td>{{ item.totalTests }}</td>
+            <td>{{ item.testsPerOneMillion }}</td>
+          </tr>
+        </tbody>
+      </table>
+     
+    </div>

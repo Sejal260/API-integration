@@ -1,0 +1,77 @@
+<!-- Ab starts here -->
+<app-ab *ngIf="displayAb"></app-ab>
+<!-- Ab ends here -->
+
+<div class="container-fluid decor" *ngIf="!displayAb">
+  <!-- invalid credentials start here -->
+  <div class="alert alert-danger" id="alert" role="alert" *ngIf="failure">
+    Invalid Credentials. Please try again!
+    <button type="button" class="close" (click)="removeAlert()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <!-- Login form starts here -->
+  <div *ngIf="!displayAb">
+    <h2 style="text-align: center">Login form</h2>
+    <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+      <div class="form-row">
+        <div class="form-group col-md-12">
+          <label for="student_no">Student number</label>
+          <input
+            type="number"
+            class="form-control"
+            id="student_no"
+            name="student_no"
+            [(ngModel)]="student_no"
+            placeholder="Enter student number"
+            required
+            minlength="7"
+            maxLength="7"
+            #stnum="ngModel"  [class.is-invalid]="stnum.invalid && stnum.touched" pattern="^\d{7}$"
+          />
+          <div *ngIf="stnum.errors && (stnum.invalid && stnum.touched)">
+            <small class="text-danger" *ngIf="stnum.errors.required">Student number is required!</small>
+            <small class="text-danger" *ngIf="stnum.errors.pattern">Student number must be of 7 digits!</small>
+
+          </div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-12">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="password"
+            name="password"
+            [(ngModel)]="password"
+            placeholder="Enter password"
+            #pw="ngModel" [class.is-invalid]="pw.invalid && pw.touched" pattern="\d{6}$"
+            required
+          />
+          <div *ngIf="pw.errors && (pw.invalid && pw.touched)">
+            <small class="text-danger" *ngIf="pw.errors.required">Password is required!</small>
+            <small class="text-danger" *ngIf="pw.errors.pattern">Password must be of 6 digits!</small>
+
+          </div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col-md-4">&nbsp;</div>
+        <div class="col-md-4">
+          <button
+            type="submit"
+            class="btn btn-primary"
+            [disabled]="!loginForm.form.valid"
+          >
+            Login
+          </button>
+        </div>
+        <div class="col-md-4">&nbsp;</div>
+      </div>
+    </br>
+    </form>
+  </div>
+  <!-- Login form ends here -->
+</div>

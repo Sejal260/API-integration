@@ -1,0 +1,95 @@
+<!--Ab starts here -->
+
+<!-- Ab ends here -->
+
+<div class="container-fluid decor" *ngIf="!displayAb">
+    <!-- Success message starts here -->
+	<div class="alert alert-success" id="alert" role="alert" *ngIf="success">
+		 Successfully SignedIn!
+		<button type="button" class="close" (click)="removeAlert()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+	</div>
+	<!-- Success message ends here -->
+
+	<!-- Failure message starts here -->
+	<div class="alert alert-danger" id="alert" role="alert" *ngIf="failure">
+		Signin Failed. Please try again!
+		<button type="button" class="close" (click)="removeAlert()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <!-- failure message ends here -->
+
+    <h2 style="text-align:center ;">SignIn form</h2>
+    <form #signForm="ngForm" (ngSubmit)="signin(signForm)">
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="name">Student name</label>
+          <input type="text" class="form-control" id="name" name="name" [(ngModel)]="name" #fullname="ngModel" [class.is-invalid]="fullname.invalid && fullname.touched " placeholder="Enter student name" required>
+          <small class="text-danger" [class.d-none]="fullname.valid || fullname.untouched">Student name is required!</small>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="student_no">Student number</label>
+          <input type="number" class="form-control" id="student_no" name="student_no" [(ngModel)]="student_no" #stnum="ngModel"  [class.is-invalid]="stnum.invalid && stnum.touched" pattern="^\d{7}$" placeholder="Enter student number" required>
+          
+            <div *ngIf="stnum.errors && (stnum.invalid && stnum.touched)">
+              <small class="text-danger" *ngIf="stnum.errors.required">Student number is required!</small>
+              <small class="text-danger" *ngIf="stnum.errors.pattern">Student number must be of 7 digits!</small>
+  
+            </div>
+          
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="branch">Branch</label>
+          <select (blur)="validateTopic(topic.value)" (click)="validateTopic(topic.value)" #topic="ngModel" [class.is-invalid]="topicHasError && topic.touched" class="custom-select" id="branch" name="branch" [(ngModel)]="branch" required >
+            <option value="default">--Branch--</option>
+            <option *ngFor="let branch of branches">{{branch}}</option> 
+          </select>
+          <small class="text-danger" [class.d-none]="!topicHasError || topic.untouched">Please choose a topic </small>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="mobile_no">Mobile number</label>
+          <input type="number" class="form-control" id="mobile_no" name="mobile_no" [(ngModel)]="mobile_no" #phone="ngModel" pattern="^\d{10}$" [class.is-invalid]="phone.invalid && phone.touched"  placeholder="Enter mobile number" required>
+          
+          <div *ngIf="phone.errors && (phone.invalid && phone.touched)">
+            <small class="text-danger" *ngIf="phone.errors.required">Mobile number is required!</small>
+            <small class="text-danger" *ngIf="phone.errors.pattern">Mobile number must be of 10 digits!</small>
+
+          </div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" id="email" name="email" [(ngModel)]="email" #mail="ngModel" [class.is-invalid]="mail.invalid && mail.touched" placeholder="Enter email" required>
+          <small class="text-danger" [class.d-none]="mail.valid || mail.untouched">Email is required</small>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" id="password" name="password" [(ngModel)]="password" #pw="ngModel" [class.is-invalid]="pw.invalid && pw.touched" pattern="\d{6}$" placeholder="Enter password" required>
+          <div *ngIf="pw.errors && (pw.invalid && pw.touched)">
+            <small class="text-danger" *ngIf="pw.errors.required">Password is required!</small>
+            <small class="text-danger" *ngIf="pw.errors.pattern">Password must be of 6 digits!</small>
+
+          </div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col-md-5">
+          &nbsp;
+        </div>
+        <div class="col-md-2">
+          <button type="submit" class="btn btn-primary" [disabled]="!regForm.form.valid">Register</button>
+        </div>
+        <div class="col-md-5">
+          &nbsp;
+        </div>
+      </div>
+      <br>
+    </form>
+  </div>
+  
+
