@@ -7,23 +7,23 @@ import { SigninComponent } from './signin/signin.component';
 const routes: Routes = [];
 {
   path: '',
-  redirectTo;'/login'
+  redirectTo:'/login',
   pathMatch:'full'
-}
+},
 {
   path:'login',
-  component; LoginComponent
-}
+  component: LoginComponent
+},
 {
   path:'signin',
-  component; SigninComponent
-}
+  component: SigninComponent
+},
 {
   path: 'corona',
-  component; CoronaComponent,
-  canActivate;[AuthGuard]
+  component: CoronaComponent,
+  canActivate:[AuthGuard]
 }
-;
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
